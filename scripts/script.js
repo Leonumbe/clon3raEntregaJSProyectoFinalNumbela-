@@ -4,12 +4,19 @@
 let reserva;
 
 //Nuestra reserva la guardamos en el localStorage
-if (JSON.parse(localStorage.getItem('reserva'))){
-    reserva = JSON.parse(localStorage.getItem('reserva'))
-}else{
+// se reemplaza por TERNARIO
+reserva = (JSON.parse(localStorage.getItem('reserva'))) ? 
+    reserva = JSON.parse(localStorage.getItem('reserva')):
     localStorage.setItem('reserva', JSON.stringify([]))
-    reserva = JSON.parse(localStorage.getItem('reserva'))
-}
+    reserva = JSON.parse(localStorage.getItem('reserva'));
+
+// //Nuestra reserva la guardamos en el localStorage
+// if (JSON.parse(localStorage.getItem('reserva'))){
+//     reserva = JSON.parse(localStorage.getItem('reserva'))
+// }else{
+//     localStorage.setItem('reserva', JSON.stringify([]))
+//     reserva = JSON.parse(localStorage.getItem('reserva'))
+// }
 
 //muestra las card de manera dinamica reemplazando al html
 function showRooms() {

@@ -6,12 +6,18 @@ let buttonSubmit;
 let fee = 0.1;
 
 //Nuestra reserva la guardamos en el localStorage
-if (JSON.parse(localStorage.getItem('reserva'))){
-    reserva = JSON.parse(localStorage.getItem('reserva'))
-    }else{
+//se reemplaza por TERNARIO
+reserva = (JSON.parse(localStorage.getItem('reserva'))) ? 
+    reserva = JSON.parse(localStorage.getItem('reserva')):
     localStorage.setItem('reserva', JSON.stringify([]))
-    reserva = JSON.parse(localStorage.getItem('reserva'))
-}
+    reserva = JSON.parse(localStorage.getItem('reserva'));
+
+// if (JSON.parse(localStorage.getItem('reserva'))){
+//     reserva = JSON.parse(localStorage.getItem('reserva'))
+//     }else{
+//     localStorage.setItem('reserva', JSON.stringify([]))
+//     reserva = JSON.parse(localStorage.getItem('reserva'))
+// }
 
 //---------------page Booked---------------------//
 //Funcion suma
@@ -83,12 +89,19 @@ if(reserva.length == 0){
 //---------------Form---------------------//
 
 //Nuestro formulario es guardado en el localStorage
-if (JSON.parse(localStorage.getItem('userBooked'))){
+//Operador ternario
+userBooked =  (JSON.parse(localStorage.getItem('userBooked'))) ? 
     reserva = JSON.parse(localStorage.getItem('userBooked'))
-    }else{
-    localStorage.setItem('userBooked', JSON.stringify([]))
-    reserva = JSON.parse(localStorage.getItem('userBooked'))
-}
+    : localStorage.setItem('userBooked', JSON.stringify({}))
+    reserva = JSON.parse(localStorage.getItem('userBooked'));
+
+// if (JSON.parse(localStorage.getItem('userBooked'))){
+//     reserva = JSON.parse(localStorage.getItem('userBooked'))
+//     }else{
+//     localStorage.setItem('userBooked', JSON.stringify([]))
+//     reserva = JSON.parse(localStorage.getItem('userBooked'))
+// }
+
 //Completar formulario
 function endBooked() {
     class user {
@@ -108,6 +121,7 @@ function endBooked() {
     
     userBooked = new user(name.value, surname.value, email.value, phone.value, text.value)
     
+    
     if ((((userBooked.name == '') || (userBooked.surname == '')) || (userBooked.email == '')) || (userBooked.phone == '')) {
          //alert('Sorry, but you must complete the form to submit!!!')
          Swal.fire({
@@ -119,7 +133,7 @@ function endBooked() {
               popup: 'animate__animated animate__fadeOutUp'
             }
         })
-    } else {
+    }else{
         Swal.fire({
             title: 'Great, your booked were processed correctly!!!',
             showClass: {
@@ -129,10 +143,10 @@ function endBooked() {
               popup: 'animate__animated animate__fadeOutUp'
             }
         })
+
+        userBooked += new user(name.value, surname.value, email.value, phone.value, text.value);
     } 
-        
-    userBooked += new user(name.value, surname.value, email.value, phone.value, text.value)
-        
+    
     localStorage.setItem('userBooked', JSON.stringify(userBooked))
     console.log(userBooked);
     console.log(reserva)

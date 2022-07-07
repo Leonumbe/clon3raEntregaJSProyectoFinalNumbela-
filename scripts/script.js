@@ -71,6 +71,7 @@ function addReserve(e){
             showConfirmButton: false,
             timer: 1500
           })
+          
     }else{
         //si esta lo borro y
         let filterReserve = reserva.filter(prod => prod.id != inReserve.id)
@@ -133,3 +134,4 @@ btnSearcher.onclick = () =>{
     contenedora.innerHTML = ''
     filterByCategory()
 }
+

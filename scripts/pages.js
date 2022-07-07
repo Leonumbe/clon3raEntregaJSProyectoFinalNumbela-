@@ -91,9 +91,9 @@ if(reserva.length == 0){
 //Nuestro formulario es guardado en el localStorage
 //Operador ternario
 userBooked =  (JSON.parse(localStorage.getItem('userBooked'))) ? 
-    reserva = JSON.parse(localStorage.getItem('userBooked'))
+    userBooked = JSON.parse(localStorage.getItem('userBooked'))
     : localStorage.setItem('userBooked', JSON.stringify({}))
-    reserva = JSON.parse(localStorage.getItem('userBooked'));
+    userBooked = JSON.parse(localStorage.getItem('userBooked'));
 
 // if (JSON.parse(localStorage.getItem('userBooked'))){
 //     reserva = JSON.parse(localStorage.getItem('userBooked'))
@@ -127,12 +127,13 @@ function endBooked() {
          Swal.fire({
             title: 'Sorry, but you must complete the form to be able to send it!!!',
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate__animated animate__fadeInDown'
             },
             hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate__animated animate__fadeOutUp'
             }
         })
+        userBooked += new user(name.value, surname.value, email.value, phone.value, text.value);
     }else{
         Swal.fire({
             title: 'Great, your booked were processed correctly!!!',
@@ -144,7 +145,6 @@ function endBooked() {
             }
         })
 
-        userBooked += new user(name.value, surname.value, email.value, phone.value, text.value);
     } 
     
     localStorage.setItem('userBooked', JSON.stringify(userBooked))
@@ -205,19 +205,32 @@ function obtenerFecha(){
     //console.log(checkInDate.getTime())
 
     //Se reemplaza por TERNARIO
-    checkInDate = (checkInDate.getTime() < actualDate.getTime()) ? alert("error, debe elegir una fecha vigente para su checkin"+"\n"+actualDate) : new Date(checkIn.value);
-    // if (checkInDate.getTime() < actualDate.getTime()) {
-        //    alert("error, debe elegir una fecha vigente para su checkin"+"\n"+actualDate)
-        //     checkInDate = new Date(checkIn.value);
-        // }
+    checkInDate = (checkInDate.getTime() < actualDate.getTime()) ?
+        Swal.fire({ icon: 'warning', title: 'Mistake', text: "You must choose a valid date for your checkin!!!"
+                      + "\n Today is: " + actualDate, showConfirmButton: false, timer: 7000
+              })
+        : new Date(checkIn.value);
+    //  if (checkInDate.getTime() < actualDate.getTime()) {
+    //      //  alert("error, debe elegir una fecha vigente para su checkin"+"\n"+actualDate)
+    //     Swal.fire({
+    //         icon: 'warning',
+    //         title: 'Mistake',
+    //         text: "Debe elegir una fecha vigente para su checkin."
+    //               + "\nFecha actual: " + actualDate,
+    //         showConfirmButton: false,
+    //         timer: 5000
+    //       })
+    //          checkInDate = new Date(checkIn.value);
+    //     }
         
     //Se reemplaza por TERNARIO
-    checkOutDate = (checkOutDate <= checkInDate ) ? alert("error, debe elegir una fecha posterior a la fecha de checkin") : new Date(checkOut.value);
+    checkOutDate = (checkOutDate <= checkInDate ) ? 
+        Swal.fire({ icon: 'warning', title: 'Mistake', text: "You must choose a date after the checkin date!!!", showConfirmButton: false, timer: 5000})
+        : new Date(checkOut.value);
     // if ((checkOutDate <= actualDate)||(checkOutDate == checkInDate )) {
     //    alert("error, debe elegir una fecha posterior a la fecha de checkin"+"\n"+checkInDate)
     //     checkOutDate = new Date(checkIn.value);
     // }
-        
 
     // //ver validacion
     // if (localStorage.getItem(dateTotal) == NaN) {
@@ -229,14 +242,55 @@ function obtenerFecha(){
 }
 
 function pasajeroDatos(){
-    obtenerPasajero()
     obtenerFecha()
+    obtenerPasajero()
+    
     if(checkIn.value,checkOut.value,pasajeros.value === null || checkIn.value,checkOut.value,pasajeros.value === ''){
-        alert("Select a date and guests to continue")
+        //alert("Select a date and guests to continue")
+        let timerInterval
+        Swal.fire({
+            title: 'Select a date and guests to continue!',
+            timer: 2500,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
     }else{
         let dateTotal = checkOutDate - checkInDate;
         localStorage.setItem("dateTotal", Math.floor(dateTotal / (1000 * 60 * 60 * 24)));
-        alert("Ha reservado esta habitacion por "+dateTotal/(1000 * 60 * 60 * 24)+" noche/s")
+        //alert("Ha reservado esta habitacion por "+dateTotal/(1000 * 60 * 60 * 24)+" noche/s")
+        Toastify({
+
+                text:"Ha reservado esta habitacion por "+ dateTotal/(1000 * 60 * 60 * 24)+" noche/s",
+                duration: 5000,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: " linear-gradient(to right, rgb(106, 6, 236), rgb(220, 0, 240)",
+                },
+                offset: {
+                    x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 100,// vertical axis - can be a number or a string indicating unity. eg: '2em'
+                  },
+                
+                }).showToast();
+
+
+
         window.location.href = "#bookedInProgress";
     }
 }

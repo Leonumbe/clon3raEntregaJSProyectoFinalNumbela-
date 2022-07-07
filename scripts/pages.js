@@ -158,7 +158,7 @@ buttonSubmit = document.getElementById('buttonSubmit');
 buttonSubmit.onclick = (e) => {
     e.preventDefault()
     endBooked()
-    
+    window.location.href = "#bookedInProgress";
 }
 
 //-----------------------check-in-out-------------------------------//
@@ -273,25 +273,23 @@ function pasajeroDatos(){
         localStorage.setItem("dateTotal", Math.floor(dateTotal / (1000 * 60 * 60 * 24)));
         //alert("Ha reservado esta habitacion por "+dateTotal/(1000 * 60 * 60 * 24)+" noche/s")
         Toastify({
-
-                text:"Ha reservado esta habitacion por "+ dateTotal/(1000 * 60 * 60 * 24)+" noche/s",
-                duration: 5000,
-                gravity: "top", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                  background: " linear-gradient(to right, rgb(106, 6, 236), rgb(220, 0, 240)",
-                },
-                offset: {
-                    x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                    y: 100,// vertical axis - can be a number or a string indicating unity. eg: '2em'
-                  },
-                
-                }).showToast();
-
-
-
-        window.location.href = "#bookedInProgress";
+            text:"Ha reservado esta habitacion por "+ dateTotal/(1000 * 60 * 60 * 24)+" noche/s",
+            duration: 5000,
+            gravity: "top", // `top` or `bottom`
+            position: "center", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: " linear-gradient(to right, rgb(106, 6, 236), rgb(220, 0, 240)",
+            },
+            offset: {
+                x: 0, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                y: 100,// vertical axis - can be a number or a string indicating unity. eg: '2em'
+            },
+        }).showToast();
+            
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000); 
     }
 }
 

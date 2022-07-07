@@ -80,6 +80,9 @@ function addReserve(e){
     }
     console.log(reserva)
     localStorage.setItem('reserva', JSON.stringify(reserva))
+    setTimeout(() => {
+        window.location.reload();
+    }, 1000); 
 }
 
 //Acumulador de seleccion se actualiza cada vez que refresh

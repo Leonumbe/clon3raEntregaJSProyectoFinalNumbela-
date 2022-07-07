@@ -123,6 +123,7 @@ function endBooked() {
     
     
     if ((((userBooked.name == '') || (userBooked.surname == '')) || (userBooked.email == '')) || (userBooked.phone == '')) {
+        //SE REEMPLAZA ALERT POR SWEAT
          //alert('Sorry, but you must complete the form to submit!!!')
          Swal.fire({
             title: 'Sorry, but you must complete the form to be able to send it!!!',
@@ -205,6 +206,7 @@ function obtenerFecha(){
     //console.log(checkInDate.getTime())
 
     //Se reemplaza por TERNARIO
+    //SE reemplaza alert por SWEAT
     checkInDate = (checkInDate.getTime() < actualDate.getTime()) ?
         Swal.fire({ icon: 'warning', title: 'Mistake', text: "You must choose a valid date for your checkin!!!"
                       + "\n Today is: " + actualDate, showConfirmButton: false, timer: 7000
@@ -224,6 +226,7 @@ function obtenerFecha(){
     //     }
         
     //Se reemplaza por TERNARIO
+    //Se reemplaza alert por Sweat
     checkOutDate = (checkOutDate <= checkInDate ) ? 
         Swal.fire({ icon: 'warning', title: 'Mistake', text: "You must choose a date after the checkin date!!!", showConfirmButton: false, timer: 5000})
         : new Date(checkOut.value);
@@ -263,7 +266,6 @@ function pasajeroDatos(){
                 clearInterval(timerInterval)
             }
         }).then((result) => {
-            /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
                 console.log('I was closed by the timer')
             }
@@ -271,6 +273,7 @@ function pasajeroDatos(){
     }else{
         let dateTotal = checkOutDate - checkInDate;
         localStorage.setItem("dateTotal", Math.floor(dateTotal / (1000 * 60 * 60 * 24)));
+        //SE REEEMPLAZA ALERT POR TOASTIFY
         //alert("Ha reservado esta habitacion por "+dateTotal/(1000 * 60 * 60 * 24)+" noche/s")
         Toastify({
             text:"Ha reservado esta habitacion por "+ dateTotal/(1000 * 60 * 60 * 24)+" noche/s",
@@ -286,7 +289,7 @@ function pasajeroDatos(){
                 y: 100,// vertical axis - can be a number or a string indicating unity. eg: '2em'
             },
         }).showToast();
-            
+         // SE AGREGA SETTIMEOUT   
         setTimeout(() => {
             window.location.reload();
         }, 3000); 

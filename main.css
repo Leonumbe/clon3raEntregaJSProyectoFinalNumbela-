@@ -684,5 +684,68 @@ footer{
   }
 }
 
-   
+/*---------------------------------------*/
+.skills .carousel .card{
+  display: flex;
+  flex-flow: row wrap;
+  background:#fff;
+  border-radius: 6px;
+  padding: 25px 35px;
+  transition: all 0.3s ease;
+  width: calc(43% - 10px);
+  text-align: center;
+  border-radius: 6px;
+  padding: 20px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   
+}
+.skills .carousel .card:hover{
+  background: crimson;
+}
+.skills .carousel .card .box{
+  margin-bottom: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.skills .carousel .card:hover .box{
+  transform: scale(1.05);
+}
+.skills .carousel .card i{
+  font-size: 50px;
+  color: crimson;
+  transition: color 0.3s ease;
+}
+.skills .carousel .card:hover i{
+  color: #fff;
+}
+.skills .carousel .card .text{
+  font-size: 25px;
+  font-size: 500;
+  margin: 10px 0 7px 0;
+}
+.owl-dots{
+  text-align: center;
+  margin-top: 20px;
+}
+.owl-dot{
+  height: 13px;
+  width: 13px;
+  margin: 0 5px;
+  outline: none!important;
+  border-radius: 50%;
+  border: 2px solid crimson!important;
+  transition: all 0.3s ease;
+}
+.owl-dot.active{
+  width: 35px;
+  border-radius: 14px;
+}   
+.owl-dot.active,
+.owl-dot:hover{
+  background: crimson!important;
+}

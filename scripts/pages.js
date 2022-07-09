@@ -70,19 +70,19 @@ if(reserva.length == 0){
 
     deleteCart.onclick = () => {
         reserva = []
-        tbody.innerHTML = ``
-        localStorage.setItem('reserva', JSON.stringify(reserva))
         checkIn = '';
         checkOut = '';
         dateTotal = '';
         pasajeroSelect = ''
         userBooked = {};
+        tbody.innerHTML = ``
+        localStorage.setItem('reserva', JSON.stringify(reserva))
         localStorage.setItem('check-in',JSON.stringify(checkIn))
         localStorage.setItem('check-out',JSON.stringify(checkOut))
         localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
         localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect))
         localStorage.setItem('userBooked', JSON.stringify(userBooked))
-        console.log(reserva)
+        //console.log(reserva)
     }
 }
 

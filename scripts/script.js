@@ -1,6 +1,6 @@
 
-//------------------------Nueva Entrega Eventos-Dom-Storage-----------------------------//
-//declaracion variables golabales
+//-----------------------------------------------------//
+//declaracion variables globales
 let reserva;
 
 //Nuestra reserva la guardamos en el localStorage
@@ -138,3 +138,56 @@ btnSearcher.onclick = () =>{
     filterByCategory()
 }
 
+//------------------------incluimos de manera dinamica html desde API por fetch-----------------------------//
+
+
+
+//MODELO PARA TRABAJAR UNA API
+
+//1RO LOADER RANDOM
+const fetchLocalData = () =>{
+    fetch('./scripts/data.json').then((response) => response.json())
+        .then((result) => {
+            renderAboutUs(result)
+        }).catch((err)=>{
+            console.error(err)   
+        })
+}
+fetchLocalData()
+
+const renderAboutUs = (body) => {
+    console.log(body)
+    const bodyAboutUs =  `
+            
+        <img src="${body.img1}" alt="">    
+        <h1 class="title">${body.mainTittle}</h1>
+        <div class="carousel">
+                <h2 class="subT">${body.subTittle}</h2>
+            <div class='card'>
+                <div class='box'>
+                <div class="text">Web Developer</div>
+                    <p class="text">${body.mission}</p>
+                </div>
+            </div>
+            <div class='card box'>
+                <div class='box'>
+                <div class="text">Web Developer</div>
+                    <p class="text">${body.values}</p>
+                </div>
+            </div>
+            <div class='card box'>
+                <div class='box'>
+                <div class="text">Web Developer</div>
+                    <p class="text">${body.target}</p>
+                </div>
+            </div>
+        </div>
+            `
+    let contAboutUs = document.getElementById('contAboutUs')
+    contAboutUs.innerHTML += bodyAboutUs
+}
+
+
+
+
+// 2 agrego el codigo

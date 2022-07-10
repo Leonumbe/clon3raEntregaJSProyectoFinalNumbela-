@@ -30,20 +30,20 @@ const body = document.getElementById('bookedInProgress');
 //desplegamos reserva en el Dom
 if(reserva.length == 0){
     const noBookedSelection = 
-    `
-    <h1 class="title subTAdapt">You are not selected any room</h1>
-    <a class="" href="../index.html">
-        <button class="btn">Back</button>
-    <a/>
-    `
+        `
+        <h1 class="title subTAdapt">You are not selected any room</h1>
+        <a class="" href="../index.html">
+            <button class="btn">Back</button>
+        <a/>
+        `
     body.innerHTML += noBookedSelection; 
     }else{
     const summary = `
-    <h1 id="bookedSelection"class="subT  h1adapted">Booked Selection</h1>
-    <div id='tBody'></div>
-    <a id="filter" class="btn" href="../index.html">Back</a>
-    <a href="#Form" class="btn">End Booked</a>
-    `
+        <h1 id="bookedSelection"class="subT  h1adapted">Booked Selection</h1>
+        <div id='tBody'></div>
+        <a id="filter" class="btn" href="../index.html">Back</a>
+        <a href="#Form" class="btn">End Booked</a>
+        `
     body.innerHTML += summary
     const tbody = document.getElementById('tBody')
     for (let i = 0; i < reserva.length; i++) {
@@ -59,32 +59,59 @@ if(reserva.length == 0){
                 <div class="price">Price per night: $${price.toLocaleString()}- Euros</div>
                 <div>Total Amount: $ ${(cantidad * price * localStorage.getItem("dateTotal")).toLocaleString()}- Euros</div>
             </div>
-            <button id='delete' class='btn'>Delete</button>
+            <button id='${id}' class='btn deleteBtn'>Delete</button>
         </div>
-        `
+        ` 
         tbody.innerHTML += reservaFinal
     }
-
-    //Evento borrar reserva
-    deleteCart = document.getElementById('delete')
-
-    deleteCart.onclick = () => {
-        reserva = []
-        checkIn = '';
-        checkOut = '';
-        dateTotal = '';
-        pasajeroSelect = ''
-        userBooked = {};
-        tbody.innerHTML = ``
-        localStorage.setItem('reserva', JSON.stringify(reserva))
-        localStorage.setItem('check-in',JSON.stringify(checkIn))
-        localStorage.setItem('check-out',JSON.stringify(checkOut))
-        localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
-        localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect))
-        localStorage.setItem('userBooked', JSON.stringify(userBooked))
-        //console.log(reserva)
-    }
 }
+
+//--------------boton borrar-------------------------------///
+deleteCart = document.getElementsByClassName('deleteBtn')
+const deleteRoom = (id) => {
+    const item = reserva.find(prod => prod.id === id)
+    //obtengo indice del item
+    const indice = reserva.indexOf(item)
+    //elimino carrito del array
+    reserva.splice(indice, 1)
+}
+deleteRoom()
+deleteCart.onclick = () => {
+        deleteRoom()
+    }  
+
+
+// for (let i = 0; i < reserva.length; i++) {
+//     const element = reserva[i];
+//     element.addEventListener('click', deleteRoom)
+// }
+// //Evento borrar reserva
+// deleteCart.onclick = () => {
+//         const eliminarReserva = (prodId) => {
+//         const item = reserva.find(prod => prod.id === prodId)
+//         const indice = reserva.indexOf(item)
+//         reserva.plice(indice, 1)
+//     }
+  
+// }
+    //deleteCart = document.getElementById('delete')
+    // deleteCart.onclick = () => {
+    //     reserva = []
+    //     checkIn = '';
+    //     checkOut = '';
+    //     dateTotal = '';
+    //     pasajeroSelect = ''
+    //     userBooked = {};
+    //     tbody.innerHTML = ``
+    //     localStorage.setItem('reserva', JSON.stringify(reserva))
+    //     localStorage.setItem('check-in',JSON.stringify(checkIn))
+    //     localStorage.setItem('check-out',JSON.stringify(checkOut))
+    //     localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
+    //     localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect))
+    //     localStorage.setItem('userBooked', JSON.stringify(userBooked))
+    //     //console.log(reserva)
+    // }
+//}
 
 //---------------Form---------------------//
 

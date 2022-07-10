@@ -81,7 +81,7 @@ function addReserve(e){
     console.log(reserva)
     localStorage.setItem('reserva', JSON.stringify(reserva))
     setTimeout(() => {
-        window.location.reload();
+        //window.location.reload();
     }, 1000); 
 }
 
@@ -145,7 +145,7 @@ const fetchLocalData = () =>{
     fetch('./scripts/data.json').then((response) => response.json())
         .then((result) => {
             renderAboutUs(result)
-            console.log(result)
+           // console.log(result)
         }).catch((err)=>{
             console.log(err)   
         })
@@ -155,7 +155,7 @@ const fetchLocalData = () =>{
 //2do render sobre api data.json
 // 2 agrego el codigo
 const renderAboutUs = (body) => {
-    console.log(body)
+    //console.log(body)
     const bodyAboutUs =  `
             
         <h1 class="title">${body.mainTittle}</h1>

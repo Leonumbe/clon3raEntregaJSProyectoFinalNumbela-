@@ -162,25 +162,30 @@ const renderAboutUs = (body) => {
             
         <h1 class="title">${body.mainTittle}</h1>
         <div class="carousel">
-                <h2 class="subT">${body.subTittle}</h2>
-            <div class='card'>
+        <div class='subTbox'>
+            <h2 class="subT subTA">${body.subTittle.text1}</h2>
+            <h2 class="subT">${body.subTittle.text2}</h2>
+            <h2 class="subT subTA">${body.subTittle.text3}</h2>
+        </div>
+            <div class='card box'>
                 <div class='box'>
-                <i class="fa-duotone fa-list-check"></i>
-                <div class="text">Web Developer</div>
-                    <p class="pText">${body.mission}</p>
+                    <i class="${body.cardA.icon1}"></i>
+                    <div class="text">${body.cardA.tMission}</div>
+                    <p class="pText">${body.cardA.mission}</p>
                 </div>
             </div>
             <div class='card box'>
                 <div class='box'>
-                <div class="text">Web Developer</div>
-                    <p class="pText">${body.values}</p>
+                    <i class="${body.cardB.icon2}"></i>
+                    <div class="text">${body.cardB.tValues}</div>
+                    <p class="pText">${body.cardB.values}</p>
                 </div>
             </div>
             <div class='card box'>
                 <div class='box'>
-                <i class="fa-solid fa-bullseye"></i>
-                <div class="text">Web Developer</div>
-                    <p class="pText">${body.target}</p>
+                    <i class="${body.cardC.icon3}"></i>
+                    <div class="text">${body.cardC.tTarget}</div>
+                    <p class="pText">${body.cardC.target}</p>
                 </div>
             </div>
         </div>

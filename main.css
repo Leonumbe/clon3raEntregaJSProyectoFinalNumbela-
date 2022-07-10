@@ -687,20 +687,27 @@ footer{
 /*---------------------------------------*/
 
 
+.skills .subTbox{
+margin-bottom: 1rem;
+}
 .skills h2{
-  margin:0rem 0rem  3rem 0rem;
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
-  color:  rgb(220, 0, 240);
+  color:  #353d45;
 }
+.skills .subTA{
+  text-align: center;
+  color: rgb(106, 6, 236);
+}
+
 .skills .carousel{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   margin: 15px;
-
+  
 } 
 .skills .carousel .card{
   background: whitesmoke;
@@ -709,10 +716,10 @@ footer{
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.382);
   padding: 5px 5px;
   cursor: pointer;
-  width: 30%;
+  width: 31%;
 }
 .skills .carousel .card:hover{
-  background: rgba(0, 0, 0, 0.747);
+  background: #353d45;
 }
 .skills .carousel .card .box{
   display: flex;
@@ -721,6 +728,7 @@ footer{
   justify-content: center;
   text-align: center;
   transition: all 0.3s ease;
+  padding: 20px 10px;
 }
 .skills .carousel .card:hover .pText{
   color: white
@@ -728,9 +736,18 @@ footer{
 .skills .carousel .card:hover .box{
   transform: scale(1.05);
 }
+.skills .carousel .card i{
+  font-size: 50px;
+  color:  #353d45;
+  
+  transition: color 0.3s ease;
+}
+.skills .carousel .card:hover i{
+  color: rgb(106, 6, 236);
+}
 .skills .carousel .card .text{
   font-family: 'Dancing Script', cursive;
-  color: rgb(106, 6, 236);
+  color:  rgb(220, 0, 240);
   font-size: 35px;
   font-weight: 500;
   margin: 10px;

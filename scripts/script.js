@@ -149,8 +149,9 @@ const fetchLocalData = () =>{
     fetch('./scripts/data.json').then((response) => response.json())
         .then((result) => {
             renderAboutUs(result)
+            console.log(result)
         }).catch((err)=>{
-            console.error(err)   
+            console.log(err)   
         })
 }
 fetchLocalData()
@@ -159,12 +160,12 @@ const renderAboutUs = (body) => {
     console.log(body)
     const bodyAboutUs =  `
             
-        <img src="${body.img1}" alt="">    
         <h1 class="title">${body.mainTittle}</h1>
         <div class="carousel">
                 <h2 class="subT">${body.subTittle}</h2>
             <div class='card'>
                 <div class='box'>
+                <i class="fa-duotone fa-list-check"></i>
                 <div class="text">Web Developer</div>
                     <p class="pText">${body.mission}</p>
                 </div>
@@ -177,6 +178,7 @@ const renderAboutUs = (body) => {
             </div>
             <div class='card box'>
                 <div class='box'>
+                <i class="fa-solid fa-bullseye"></i>
                 <div class="text">Web Developer</div>
                     <p class="pText">${body.target}</p>
                 </div>

@@ -166,19 +166,19 @@ const renderAboutUs = (body) => {
             <div class='card'>
                 <div class='box'>
                 <div class="text">Web Developer</div>
-                    <p class="text">${body.mission}</p>
+                    <p class="pText">${body.mission}</p>
                 </div>
             </div>
             <div class='card box'>
                 <div class='box'>
                 <div class="text">Web Developer</div>
-                    <p class="text">${body.values}</p>
+                    <p class="pText">${body.values}</p>
                 </div>
             </div>
             <div class='card box'>
                 <div class='box'>
                 <div class="text">Web Developer</div>
-                    <p class="text">${body.target}</p>
+                    <p class="pText">${body.target}</p>
                 </div>
             </div>
         </div>

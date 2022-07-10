@@ -685,26 +685,36 @@ footer{
 }
 
 /*---------------------------------------*/
-.skills .carousel .card{
+
+
+.skills h2{
+  margin:0rem 0rem  3rem 0rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  color:  rgb(220, 0, 240);
+}
+.skills .carousel{
   display: flex;
   flex-flow: row wrap;
-  background:#fff;
-  border-radius: 6px;
-  padding: 25px 35px;
+  justify-content: space-between;
+  margin: 15px;
+
+} 
+.skills .carousel .card{
+  background: whitesmoke;
   transition: all 0.3s ease;
-  width: calc(43% - 10px);
-  text-align: center;
-  border-radius: 6px;
-  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.382);
+  padding: 5px 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  
+  width: 30%;
 }
 .skills .carousel .card:hover{
-  background: crimson;
+  background: rgba(0, 0, 0, 0.747);
 }
 .skills .carousel .card .box{
-  margin-bottom: 55px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -712,40 +722,25 @@ footer{
   text-align: center;
   transition: all 0.3s ease;
 }
+.skills .carousel .card:hover .pText{
+  color: white
+}
 .skills .carousel .card:hover .box{
   transform: scale(1.05);
 }
-.skills .carousel .card i{
-  font-size: 50px;
-  color: crimson;
-  transition: color 0.3s ease;
-}
-.skills .carousel .card:hover i{
-  color: #fff;
-}
 .skills .carousel .card .text{
-  font-size: 25px;
-  font-size: 500;
-  margin: 10px 0 7px 0;
-}
-.owl-dots{
-  text-align: center;
-  margin-top: 20px;
-}
-.owl-dot{
-  height: 13px;
-  width: 13px;
-  margin: 0 5px;
-  outline: none!important;
-  border-radius: 50%;
-  border: 2px solid crimson!important;
+  font-family: 'Dancing Script', cursive;
+  color: rgb(106, 6, 236);
+  font-size: 35px;
+  font-weight: 500;
+  margin: 10px;
   transition: all 0.3s ease;
 }
-.owl-dot.active{
-  width: 35px;
-  border-radius: 14px;
-}   
-.owl-dot.active,
-.owl-dot:hover{
-  background: crimson!important;
+.skills .carousel .card .pText{
+  font-family:'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #353d45;
+  margin: 5px;
+  line-height: 25px;
 }

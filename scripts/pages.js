@@ -75,7 +75,6 @@ const deleteRoom = (id) => {
     //elimino carrito del array
     reserva.splice(indice, 1)
 }
-deleteRoom()
 deleteCart.onclick = () => {
         deleteRoom()
     }  

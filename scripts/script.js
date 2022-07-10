@@ -138,13 +138,9 @@ btnSearcher.onclick = () =>{
     filterByCategory()
 }
 
-//------------------------incluimos de manera dinamica html desde API por fetch-----------------------------//
+//---incluimos de manera dinamica html desde API simulada por json a traves de fetch-----------------------------//
 
-
-
-//MODELO PARA TRABAJAR UNA API
-
-//1RO LOADER RANDOM
+//1RO fetch sobre data
 const fetchLocalData = () =>{
     fetch('./scripts/data.json').then((response) => response.json())
         .then((result) => {
@@ -153,9 +149,11 @@ const fetchLocalData = () =>{
         }).catch((err)=>{
             console.log(err)   
         })
-}
-fetchLocalData()
-
+    }
+    fetchLocalData()
+    
+//2do render sobre api data.json
+// 2 agrego el codigo
 const renderAboutUs = (body) => {
     console.log(body)
     const bodyAboutUs =  `
@@ -164,30 +162,33 @@ const renderAboutUs = (body) => {
         <div class="carousel">
         <div class='subTbox'>
             <h2 class="subT subTA">${body.subTittle.text1}</h2>
-            <h2 class="subT">${body.subTittle.text2}</h2>
-            <h2 class="subT subTA">${body.subTittle.text3}</h2>
+            <h2 class="subT subTB">${body.subTittle.text2}</h2>
+            <h2 class="subT subTC">${body.subTittle.text3}</h2>
         </div>
-            <div class='card box'>
-                <div class='box'>
-                    <i class="${body.cardA.icon1}"></i>
-                    <div class="text">${body.cardA.tMission}</div>
-                    <p class="pText">${body.cardA.mission}</p>
+            <div class='contCardBox'>
+                <div class='cardBox'>
+                    <div class='box'>
+                        <i class="${body.cardA.icon1}"></i>
+                        <div class="text">${body.cardA.tMission}</div>
+                        <p class="pText">${body.cardA.mission}</p>
+                    </div>
+                </div>
+                <div class='cardBox'>
+                    <div class='box'>
+                        <i class="${body.cardB.icon2}"></i>
+                        <div class="text">${body.cardB.tValues}</div>
+                        <p class="pText">${body.cardB.values}</p>
+                    </div>
+                </div>
+                <div class='cardBox'>
+                    <div class='box'>
+                        <i class="${body.cardC.icon3}"></i>
+                        <div class="text">${body.cardC.tTarget}</div>
+                        <p class="pText">${body.cardC.target}</p>
+                    </div>
                 </div>
             </div>
-            <div class='card box'>
-                <div class='box'>
-                    <i class="${body.cardB.icon2}"></i>
-                    <div class="text">${body.cardB.tValues}</div>
-                    <p class="pText">${body.cardB.values}</p>
-                </div>
-            </div>
-            <div class='card box'>
-                <div class='box'>
-                    <i class="${body.cardC.icon3}"></i>
-                    <div class="text">${body.cardC.tTarget}</div>
-                    <p class="pText">${body.cardC.target}</p>
-                </div>
-            </div>
+
         </div>
             `
     let contAboutUs = document.getElementById('contAboutUs')
@@ -197,4 +198,3 @@ const renderAboutUs = (body) => {
 
 
 
-// 2 agrego el codigo

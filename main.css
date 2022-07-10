@@ -625,6 +625,20 @@ footer{
   .home .home-content .text-3{
     font-size: 25px;
   }
+  .skills .carousel .subTbox .subTB{
+    display: none;
+  }
+  .skills .subTC{
+    text-align: center;
+    color: rgb(106, 6, 236);
+  }
+  .skills .carousel .contCardBox{
+    justify-content: center;
+  } 
+  .skills .carousel .contCardBox .cardBox{
+    width: 90%;
+    margin: 1rem;
+  }
 }
 
 @media screen and (max-width:700px){
@@ -701,15 +715,18 @@ margin-bottom: 1rem;
   text-align: center;
   color: rgb(106, 6, 236);
 }
+.skills .subTbox .subTB{
+  display: block;
+}
 
-.skills .carousel{
+.skills .carousel .contCardBox{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   margin: 15px;
   
 } 
-.skills .carousel .card{
+.skills .carousel .cardBox{
   background: whitesmoke;
   transition: all 0.3s ease;
   border-radius: 10px;
@@ -718,10 +735,10 @@ margin-bottom: 1rem;
   cursor: pointer;
   width: 31%;
 }
-.skills .carousel .card:hover{
+.skills .carousel .cardBox:hover{
   background: #353d45;
 }
-.skills .carousel .card .box{
+.skills .carousel .cardBox .box{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -730,22 +747,22 @@ margin-bottom: 1rem;
   transition: all 0.3s ease;
   padding: 20px 10px;
 }
-.skills .carousel .card:hover .pText{
+.skills .carousel .cardBox:hover .pText{
   color: white
 }
-.skills .carousel .card:hover .box{
+.skills .carousel .cardBox:hover .box{
   transform: scale(1.05);
 }
-.skills .carousel .card i{
+.skills .carousel .cardBox i{
   font-size: 50px;
   color:  #353d45;
   
   transition: color 0.3s ease;
 }
-.skills .carousel .card:hover i{
+.skills .carousel .cardBox:hover i{
   color: rgb(106, 6, 236);
 }
-.skills .carousel .card .text{
+.skills .carousel .cardBox .text{
   font-family: 'Dancing Script', cursive;
   color:  rgb(220, 0, 240);
   font-size: 35px;
@@ -753,7 +770,7 @@ margin-bottom: 1rem;
   margin: 10px;
   transition: all 0.3s ease;
 }
-.skills .carousel .card .pText{
+.skills .carousel .cardBox .pText{
   font-family:'Inter', sans-serif;
   font-size: 15px;
   font-weight: 500;

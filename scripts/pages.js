@@ -1,6 +1,6 @@
 //declaracion variables golabales
 let reserva;
-let deleteCart;
+let deleteCard;
 let userBooked;
 let buttonSubmit;
 let fee = 0.1;
@@ -45,6 +45,7 @@ if(reserva.length == 0){
         <a href="#Form" class="btn">End Booked</a>
         `
     body.innerHTML += summary
+
     const tbody = document.getElementById('tBody')
     for (let i = 0; i < reserva.length; i++) {
         const element = reserva[i];
@@ -60,24 +61,38 @@ if(reserva.length == 0){
                 <div>Total Amount: $ ${(cantidad * price * localStorage.getItem("dateTotal")).toLocaleString()}- Euros</div>
             </div>
             <button id='${id}' class='btn deleteBtn'>Delete</button>
-        </div>
-        ` 
-        tbody.innerHTML += reservaFinal
+            </div>
+            ` 
+            tbody.innerHTML += reservaFinal
+            
+            //--------------boton borrar-------------------------------///
+            deleteCard = document.getElementsByClassName('deleteBtn')
+            const deleteRoom = (id) => {
+                const item = reserva.find(prod => prod.id === id)
+                //obtengo indice del item   
+                const indice = reserva.indexOf(item)
+                //elimino carrito del array
+                reserva.splice(indice, 1)
+            }
+           function borrar (){ 
+           deleteCard.addEventListener('click', deleteRoom);
+        }
     }
 }
 
-//--------------boton borrar-------------------------------///
-deleteCart = document.getElementsByClassName('deleteBtn')
-const deleteRoom = (id) => {
-    const item = reserva.find(prod => prod.id === id)
-    //obtengo indice del item
-    const indice = reserva.indexOf(item)
-    //elimino carrito del array
-    reserva.splice(indice, 1)
-}
-deleteCart.onclick = () => {
-        deleteRoom()
-    }  
+
+//  //modelo borrar sin ajuste    
+// deleteCart = document.getElementsByClassName('deleteBtn')
+// const deleteRoom = (reservaId) => {
+//     const item = reserva.find(prod => prod.id === reservaId)
+//     //obtengo indice del item
+//     const indice = reserva.indexOf(item)
+//     //elimino carrito del array
+//     reserva.splice(indice, 1)
+// }
+// deleteCart.onclick = () => {
+//         deleteRoom()
+//     }  
 
 
 // for (let i = 0; i < reserva.length; i++) {
@@ -93,6 +108,7 @@ deleteCart.onclick = () => {
 //     }
   
 // }
+//modelo inicial
     //deleteCart = document.getElementById('delete')
     // deleteCart.onclick = () => {
     //     reserva = []

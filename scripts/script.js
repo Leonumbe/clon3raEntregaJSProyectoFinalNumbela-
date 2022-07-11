@@ -81,7 +81,7 @@ function addReserve(e){
     console.log(reserva)
     localStorage.setItem('reserva', JSON.stringify(reserva))
     setTimeout(() => {
-        //window.location.reload();
+        window.location.reload();
     }, 1000); 
 }
 

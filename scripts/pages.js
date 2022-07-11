@@ -4,6 +4,10 @@ let deleteCard;
 let userBooked;
 let buttonSubmit;
 let fee = 0.1;
+let checkIn = document.getElementById("check-in");
+let checkOut = document.getElementById("check-out");
+let checkInDate;
+let checkOutDate;
 
 //Nuestra reserva la guardamos en el localStorage
 //se reemplaza por TERNARIO
@@ -28,8 +32,10 @@ document.addEventListener("click", (e) => {
     const indice = reserva.indexOf(item)
     //elimino carrito del array
     reserva.splice(indice, 1)
+    window.location.reload();
     }
-
+    localStorage.setItem('reserva', JSON.stringify(reserva))
+    
 })
 
 //----------------------------------------//
@@ -52,7 +58,11 @@ if(reserva.length == 0){
             <button class="btn">Back</button>
         <a/>
         `
+
     body.innerHTML += noBookedSelection; 
+    dateTotal = 0;
+    localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
+    refreshStorage ();  
     }else{
     const summary = `
         <h1 id="bookedSelection"class="subT  h1adapted">Booked Selection</h1>
@@ -234,16 +244,12 @@ Date
 let actualDate;
 function fechaActualizada(){
     actualDate = new Date();
-    console.log(actualDate.getTime())
+    //console.log(actualDate.getTime())
 }
 fechaActualizada()
 
-//Date
-let checkIn = document.getElementById("check-in");
-let checkOut = document.getElementById("check-out");
-let checkInDate;
-let checkOutDate;
 
+// funcion onbtener Date
 function obtenerFecha(){   
     localStorage.setItem(checkIn.id, checkIn.value);
     localStorage.setItem(checkOut.id, checkOut.value);
@@ -318,7 +324,8 @@ function pasajeroDatos(){
             }
         })
     }else{
-        let dateTotal = checkOutDate - checkInDate;
+        let dateTotal = 0
+        dateTotal += checkOutDate - checkInDate;
         localStorage.setItem("dateTotal", Math.floor(dateTotal / (1000 * 60 * 60 * 24)));
         //SE REEEMPLAZA ALERT POR TOASTIFY
         //alert("Ha reservado esta habitacion por "+dateTotal/(1000 * 60 * 60 * 24)+" noche/s")
@@ -343,4 +350,15 @@ function pasajeroDatos(){
     }
 }
 
-
+// funcion para vaciar el storage si no hay reserva
+function refreshStorage () {
+        checkIn = '';
+        checkOut = '';
+        pasajeroSelect = ''
+        userBooked = {};
+        localStorage.setItem('check-in',JSON.stringify(checkIn))
+        localStorage.setItem('check-out',JSON.stringify(checkOut))
+        localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
+        localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect))
+        localStorage.setItem('userBooked', JSON.stringify(userBooked))
+    }

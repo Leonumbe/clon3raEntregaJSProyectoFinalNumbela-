@@ -19,6 +19,22 @@ reserva = (JSON.parse(localStorage.getItem('reserva'))) ?
 //     reserva = JSON.parse(localStorage.getItem('reserva'))
 // }
 
+//--------------boton borrar-------------------------------///
+            
+document.addEventListener("click", (e) => {
+    if(e.target && e.target.matches("button.deleteBtn")){
+    const item = reserva.find(prod => prod.id === e.target.id)
+    //obtengo indice del item   
+    const indice = reserva.indexOf(item)
+    //elimino carrito del array
+    reserva.splice(indice, 1)
+    }
+
+})
+
+//----------------------------------------//
+
+
 //---------------page Booked---------------------//
 //Funcion suma
 //reduce ciclo de producto mas acum. Monto total mas fee 0.1
@@ -65,18 +81,7 @@ if(reserva.length == 0){
             ` 
             tbody.innerHTML += reservaFinal
             
-            //--------------boton borrar-------------------------------///
-            deleteCard = document.getElementsByClassName('deleteBtn')
-            const deleteRoom = (id) => {
-                const item = reserva.find(prod => prod.id === id)
-                //obtengo indice del item   
-                const indice = reserva.indexOf(item)
-                //elimino carrito del array
-                reserva.splice(indice, 1)
-            }
-           function borrar (){ 
-           deleteCard.addEventListener('click', deleteRoom);
-        }
+            
     }
 }
 

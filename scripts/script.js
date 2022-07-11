@@ -93,10 +93,12 @@ contador.innerHTML = reserva.length
 
 //Filtro or categoria
 
+//-----//
 let searcher = document.getElementById('inputSearch');
 let btnSearcher = document.getElementById('filtrar')
 
 function filterByCategory() {
+    
     //creo elemento bottom
     let showAllRooms = document.createElement('button')
     showAllRooms.setAttribute("class","btn")
@@ -119,10 +121,12 @@ function filterByCategory() {
             `
             const contenedora = document.getElementById('contenedora')
             contenedora.innerHTML += card
+            
     });
     showAllRooms.onclick = () =>{
         contenedora.innerHTML = ''
         showRooms();
+   
     }
     //llamo al btn filtrar
     buttonFilter.append(showAllRooms)
@@ -132,6 +136,7 @@ function filterByCategory() {
 searcher.onchange = () =>{
     contenedora.innerHTML = ''
     filterByCategory()
+    
 }
 btnSearcher.onclick = () =>{
     contenedora.innerHTML = ''

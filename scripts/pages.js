@@ -4,6 +4,7 @@ let deleteCard;
 let userBooked;
 let buttonSubmit;
 let fee = 0.1;
+//dates
 let checkIn = document.getElementById("check-in");
 let checkOut = document.getElementById("check-out");
 let checkInDate;
@@ -38,7 +39,6 @@ document.addEventListener("click", (e) => {
     
 })
 
-//----------------------------------------//
 
 
 //---------------page Booked---------------------//
@@ -58,7 +58,6 @@ if(reserva.length == 0){
             <button class="btn">Back</button>
         <a/>
         `
-
     body.innerHTML += noBookedSelection; 
     dateTotal = 0;
     localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
@@ -76,7 +75,8 @@ if(reserva.length == 0){
     for (let i = 0; i < reserva.length; i++) {
         const element = reserva[i];
         const { id, category, name, price, img, cantidad } = element;
-        const reservaFinal = `
+        const reservaFinal =
+         `
         <div id=${id} >
             <img class="imgBooked" src="${img}" alt="Imagen de la room"> 
             <div class='boxBooked'>
@@ -87,11 +87,9 @@ if(reserva.length == 0){
                 <div>Total Amount: $ ${(cantidad * price * localStorage.getItem("dateTotal")).toLocaleString()}- Euros</div>
             </div>
             <button id='${id}' class='btn deleteBtn'>Delete</button>
-            </div>
-            ` 
-            tbody.innerHTML += reservaFinal
-            
-            
+        </div>
+        ` 
+        tbody.innerHTML += reservaFinal
     }
 }
 
@@ -350,15 +348,15 @@ function pasajeroDatos(){
     }
 }
 
-// funcion para vaciar el storage si no hay reserva
+// funcion para vaciar el storage si no hay reservas seleccionadas
 function refreshStorage () {
         checkIn = '';
         checkOut = '';
-        pasajeroSelect = ''
+        pasajeroSelect = '';
         userBooked = {};
-        localStorage.setItem('check-in',JSON.stringify(checkIn))
-        localStorage.setItem('check-out',JSON.stringify(checkOut))
-        localStorage.setItem('dateTotal',JSON.stringify(dateTotal))
-        localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect))
-        localStorage.setItem('userBooked', JSON.stringify(userBooked))
+        localStorage.setItem('check-in',JSON.stringify(checkIn));
+        localStorage.setItem('check-out',JSON.stringify(checkOut));
+        localStorage.setItem('dateTotal',JSON.stringify(dateTotal));
+        localStorage.setItem('pasajeros',JSON.stringify(pasajeroSelect));
+        localStorage.setItem('userBooked', JSON.stringify(userBooked));
     }

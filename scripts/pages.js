@@ -42,7 +42,7 @@ document.addEventListener("click", (e) => {
 
 
 //---------------page Booked---------------------//
-//Funcion suma
+//Funcion suma n booked
 //reduce ciclo de producto mas acum. Monto total mas fee 0.1
 const totalReserved = () => {
     return reserva.reduce((acumulador, prod) => acumulador + ((prod.price * 0.1 + prod.price) * prod.cantidad, 0 ))

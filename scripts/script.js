@@ -130,16 +130,27 @@ function filterByCategory() {
     }
     //llamo al btn filtrar
     buttonFilter.append(showAllRooms)
+
+    //Llamo a la function addReserva mediante el onclick ya declarado
+    const btnAdd = document.getElementsByClassName('btnAdd')
+    for (let i = 0; i < btnAdd.length; i++) {
+        const element = btnAdd[i];
+        element.addEventListener('click', addReserve)
+    }
+
 }
 
 //Eventos del filtro por categoria
 searcher.onchange = () =>{
     contenedora.innerHTML = ''
+    const buttonFilter = document.getElementById('buttonFilter')
+    buttonFilter.innerHTML = '';    
     filterByCategory()
-    
 }
 btnSearcher.onclick = () =>{
-    contenedora.innerHTML = ''
+    contenedora.innerHTML = '';
+    const buttonFilter = document.getElementById('buttonFilter')
+    buttonFilter.innerHTML = '';
     filterByCategory()
 }
 
